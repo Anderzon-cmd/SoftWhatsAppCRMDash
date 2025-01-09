@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "flowbite@2.5.2",
+      "destination": "wwwroot/lib/flowbite/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "highcharts@12.1.2",
+      "destination": "wwwroot/lib/highcharts/"
+    }
+  ]
+}
