@@ -3,12 +3,13 @@
     const clientElement = document.getElementById('time-client');
     const responseElement = document.getElementById('time-response');
     const numberPhone = document.getElementById('number-client');
-
-    const numberClient = `591${numberPhone.value}`;
+    
+    const numberClient = `${numberPhone.value}`;
 
     const timeAnalityc = await getStaticsTime(numberClient);
 
     if (timeAnalityc.error === 0) {
+        
         clientElement.innerText = timeAnalityc.data[1];
         responseElement.innerText = timeAnalityc.data[0];
     }

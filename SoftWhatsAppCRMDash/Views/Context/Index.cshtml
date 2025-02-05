@@ -1,0 +1,32 @@
+﻿@model EnterpriseContext
+@{
+    ViewData["Title"] = "Pagina de Contexto";
+}
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
+        <h2 class="mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">Formulario de contexto</h2>
+        <p class="mb-8 text-center font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-8">Seccion para dictar el comportamiento del asistente y la informacion de la empresa.</p>
+        <form asp-action="Update" class="space-y-8" method="post">
+            <input asp-for="Nid" hidden />
+            <div class="sm:col-span-2">
+                <label for="message" class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Comportamiento</label>
+                <textarea asp-for="Spromptcontext" rows="6" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="comportamiento..." required></textarea>
+                <span asp-validation-for="Spromptcontext" class="text-sm text-red-500"></span>
+                
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="message" class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400">Empresa</label>
+                <textarea asp-for="Sdata" rows="6" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="comportamiento..." required></textarea>
+                <span asp-validation-for="Sdata" class="text-sm text-red-500"></span>
+            </div>
+
+            <button type="submit" class="rounded-lg bg-blue-700 px-5 py-3 text-center text-sm font-medium text-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 sm:w-fit dark:hover:bg-primary-700 dark:focus:ring-primary-800">Actualizar</button>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+
+}

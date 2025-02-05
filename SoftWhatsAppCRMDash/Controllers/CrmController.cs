@@ -23,33 +23,33 @@ namespace SoftWhatsAppCRMDash.Controllers
             try
             {
                 var clientsDb = await _context.Clientes.ToListAsync();
-                clients= clientsDb.Select(client => new ClientVM
+                clients = clientsDb.Select(client => new ClientVM
                 {
                     Id = client.Id,
                     Nombre = client.Nombre,
                     Numero = client.Numero,
                     Photo = client.Photo,
-                    StateColor=GetStateColor((StateChat)client.StateChat),
-                    StateName=GetStateName((StateChat)client.StateChat),
-                    StateUpdate=(int)GetStateUpdate((StateChat)client.StateChat)
-                    
-                }).OrderBy(client=>client.Id).ToList();
+                    StateColor = GetStateColor((StateChat)client.StateChat),
+                    StateName = GetStateName((StateChat)client.StateChat),
+                    StateUpdate = (int)GetStateUpdate((StateChat)client.StateChat)
+
+                }).OrderBy(client => client.Id).ToList();
                 return View(clients);
             }
             catch (Exception ex)
             {
-                
+
                 return View(clients);
             }
         }
 
         [HttpPost("Client/{id}")]
-        public async Task<IActionResult> UpdateStateClient(int id,ClientCreateVM clientCreateVM)
+        public async Task<IActionResult> UpdateStateClient(int id, ClientCreateVM clientCreateVM)
         {
             try
             {
 
-                var client=await _context.Clientes.FindAsync(id);
+                var client = await _context.Clientes.FindAsync(id);
                 if (client == null)
                 {
                     return NotFound();
@@ -66,16 +66,42 @@ namespace SoftWhatsAppCRMDash.Controllers
             }
         }
         [HttpGet]
-        [Route("client/{id}")]
-        public  async Task<IActionResult> Index(int id)
+        [Route("Client/{id}")]
+        public async Task<IActionResult> Index(int id)
         {
-            var client=await _context.Clientes.FindAsync(id);
+            var client = await _context.Clientes.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
             }
 
             return View(client);
+        }
+
+        [HttpGet]
+        [Route("Profile/{id}")]
+        public async Task<IActionResult> Profile(string id)
+        {
+            try
+            {
+
+                HttpClient httpClient = new HttpClient();
+                var response = await httpClient.GetAsync($"https://serviceinteligensewhatsapp.azurewebsites.net/chats/profile-client?clientId={id}");
+                var result = await response.Content.ReadFromJsonAsync<Response<ResponsePerfil>>();
+
+                if (result.Error != 0) {
+                    return RedirectToAction(nameof(Client));
+                }
+                else
+                {
+                    return View("PerfilClient",result.Data.Message);
+                }
+            }
+            catch (Exception ex) { 
+            return RedirectToAction(nameof(Client));
+            }
+
+            
         }
 
         private string GetStateName(StateChat state)
@@ -105,7 +131,8 @@ namespace SoftWhatsAppCRMDash.Controllers
         }
         private string GetStateColor(StateChat state)
         {
-            switch (state) { 
+            switch (state)
+            {
                 case StateChat.ActiveChat:
                     return "bg-green-500";
                 case StateChat.InactiveChat:
@@ -118,10 +145,25 @@ namespace SoftWhatsAppCRMDash.Controllers
 
     }
 
-   
+
     public enum StateChat
     {
-        ActiveChat=1,
-        InactiveChat=2,
+        ActiveChat = 1,
+        InactiveChat = 2,
     }
+
+    public class Response<T>
+    {
+        public int Error { get; set; }
+        public string Status { get; set; }
+        public string Message { get; set; }
+        public T? Data { get; set; }
+
+    }
+    public class ResponsePerfil
+    {
+        public string Name { get; set; }
+        public string Message { get; set; }
+    }
+
 }

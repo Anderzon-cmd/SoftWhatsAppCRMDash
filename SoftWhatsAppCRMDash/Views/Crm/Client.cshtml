@@ -77,7 +77,7 @@
                             <th scope="col" class="px-4 py-4"></th>
                             <th scope="col" class="px-4 py-4">Id</th>
                             <th scope="col" class="px-4 py-3">Nombre</th>
-                            <th scope="col" class="px-4 py-3">Numero telefoonico</th>
+                            <th scope="col" class="px-4 py-3">Numero telefonico</th>
                             <th scope="col" class="px-4 py-3">Estado de chat</th>
                             <th scope="col" class="px-4 py-3">
                                 Acciones
@@ -122,9 +122,11 @@
                                 </td>
                                 </form>
 
-                                <td class="flex items-center px-6 py-4">
+                                <td class="flex items-center gap-2 px-6 py-4">
                                     <a asp-action="Index" asp-route-id="@client.Id"  class="font-medium text-blue-600 hover:underline dark:text-blue-500">Ver</a>
+                                    <a asp-action="Profile" asp-route-id="@client.Numero" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Perfil</a>
                                 </td>
+                                
                             </tr>
                         }
 

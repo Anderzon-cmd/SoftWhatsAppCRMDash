@@ -306,8 +306,8 @@
             <div class="z-50 my-4 hidden w-56 list-none divide-y divide-gray-100 rounded rounded-xl bg-white text-base shadow dark:bg-gray-700 dark:divide-gray-600"
                  id="dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">Neil Sims</span>
-                    <span class="block truncate text-sm text-gray-900 dark:text-white">name@flowbite.com</span>
+                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">@User.Identity.Name</span>
+                    @* <span class="block truncate text-sm text-gray-900 dark:text-white">name@flowbite.com</span> *@
                 </div>
                 <ul class="py-1 text-gray-700 dark:text-gray-300"
                     aria-labelledby="dropdown">
@@ -378,8 +378,11 @@
                 <ul class="py-1 text-gray-700 dark:text-gray-300"
                     aria-labelledby="dropdown">
                     <li>
-                        <a href="#"
-                           class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                        <form asp-action="Logout" asp-controller="Account" method="post">
+                            <button type="submit"
+                               class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</button>
+                        </form>
+                        
                     </li>
                 </ul>
             </div>
