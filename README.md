@@ -32,7 +32,7 @@ Este software combina las ventajas de un e-commerce conectado a WhatsApp con la 
 
 
 ## **Enlaces a la documentación**
-- [Documentacion del proyecto](https://1drv.ms/b/c/7702a3d1bcabd0f6/ES8immJ1DNlIvszWXKs_OIkBbxdiF-51ZI6JgggQeIENPQ?e=1uLrQV)
-- [Repositorio del proyecto](https://github.com/Anderzon-cmd/SoftWhatsAppCRMDash.git)
+- [Repositorio del ServiceInteligenseWhatsApp](https://github.com/Anderzon-cmd/ServiceInteligenseWhatsApp.git)
+- [Repositorio del AnalitycChat](https://github.com/Anderzon-cmd/AnalitycChat.git)
 - [Url del proyecto](https://softwhatsappcrmdashboard.azurewebsites.net)
 
