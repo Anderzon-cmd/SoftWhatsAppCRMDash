@@ -18,7 +18,8 @@
         return { error: 0, message: 'Success', data: [`${resultTimeResponse} (s/m)`, `${resultTimeClient} (s/m)`] }
 
     } catch (error) {
-        console.error('Error al realizar la peticion de estadisticas de tiempo');
+        console.log(error);
+        
         return { error: 1, message: error.message, data: [resultTimeResponse + ' (s/m)', resultTimeClient + ' (s/m)'] }  
     };
 }
@@ -34,7 +35,8 @@ async function getChatMessage(numberClient) {
         }
         return { error: 0, message: 'Success', data: result.data }
     } catch (error) {
-        console.error('Error al realizar la peticion de para obtener los mensajes');
+        console.log(error);
+       
         return { error: 1, message: error.message, data: message }
     };
 }
@@ -58,7 +60,7 @@ async function getAnalitycChat({ message}) {
         }
         return { error: 0, message: 'Success', data: result.detail.data }
     } catch (error) {
-        console.error('Error al obtener los datos para las estadisticas de datos');
+        console.log(error);
         return { error: 1, message: error.message, data: null }
     }
 }
