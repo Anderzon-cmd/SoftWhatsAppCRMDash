@@ -86,7 +86,7 @@ namespace SoftWhatsAppCRMDash.Controllers
             {
 
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.GetAsync($"https://serviceinteligensewhatsapp.azurewebsites.net/chats/profile-client?clientId={id}");
+                var response = await httpClient.GetAsync($"https://serviceiagentwhatsapp-esa2h2b7cmckfcf6.brazilsouth-01.azurewebsites.net/chats/profile-client?clientId={id}");
                 var result = await response.Content.ReadFromJsonAsync<Response<ResponsePerfil>>();
 
                 if (result.Error != 0) {
